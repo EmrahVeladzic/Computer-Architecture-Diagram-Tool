@@ -30,13 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Details));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnRegSave = new System.Windows.Forms.Button();
-            this.txtRegDesc = new System.Windows.Forms.TextBox();
-            this.txtRegAdd = new System.Windows.Forms.TextBox();
-            this.dgvRegisters = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -44,16 +38,22 @@
             this.txtFlagName = new System.Windows.Forms.TextBox();
             this.txtFlagVal = new System.Windows.Forms.TextBox();
             this.dgvFlags = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.Register = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DelReg = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Flag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DelFlag = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnRegSave = new System.Windows.Forms.Button();
+            this.txtRegDesc = new System.Windows.Forms.TextBox();
+            this.txtRegAdd = new System.Windows.Forms.TextBox();
+            this.dgvRegisters = new System.Windows.Forms.DataGridView();
+            this.Register = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DelReg = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegisters)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlags)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegisters)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,78 +67,15 @@
             this.panel1.Size = new System.Drawing.Size(874, 371);
             this.panel1.TabIndex = 4;
             // 
-            // groupBox2
+            // btnClose
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.btnRegSave);
-            this.groupBox2.Controls.Add(this.txtRegDesc);
-            this.groupBox2.Controls.Add(this.txtRegAdd);
-            this.groupBox2.Controls.Add(this.dgvRegisters);
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(868, 158);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Registers:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(453, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Description:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(453, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Address:";
-            // 
-            // btnRegSave
-            // 
-            this.btnRegSave.Location = new System.Drawing.Point(786, 124);
-            this.btnRegSave.Name = "btnRegSave";
-            this.btnRegSave.Size = new System.Drawing.Size(75, 23);
-            this.btnRegSave.TabIndex = 4;
-            this.btnRegSave.Text = "Save";
-            this.btnRegSave.UseVisualStyleBackColor = true;
-            this.btnRegSave.Click += new System.EventHandler(this.btnRegSave_Click);
-            // 
-            // txtRegDesc
-            // 
-            this.txtRegDesc.Location = new System.Drawing.Point(454, 74);
-            this.txtRegDesc.Name = "txtRegDesc";
-            this.txtRegDesc.Size = new System.Drawing.Size(408, 20);
-            this.txtRegDesc.TabIndex = 2;
-            // 
-            // txtRegAdd
-            // 
-            this.txtRegAdd.Location = new System.Drawing.Point(453, 35);
-            this.txtRegAdd.Name = "txtRegAdd";
-            this.txtRegAdd.Size = new System.Drawing.Size(408, 20);
-            this.txtRegAdd.TabIndex = 1;
-            // 
-            // dgvRegisters
-            // 
-            this.dgvRegisters.AllowUserToAddRows = false;
-            this.dgvRegisters.AllowUserToDeleteRows = false;
-            this.dgvRegisters.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvRegisters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegisters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Register,
-            this.DelReg});
-            this.dgvRegisters.Location = new System.Drawing.Point(6, 19);
-            this.dgvRegisters.Name = "dgvRegisters";
-            this.dgvRegisters.ReadOnly = true;
-            this.dgvRegisters.Size = new System.Drawing.Size(441, 128);
-            this.dgvRegisters.TabIndex = 0;
-            this.dgvRegisters.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegisters_CellContentClick);
+            this.btnClose.Location = new System.Drawing.Point(744, 331);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(120, 25);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox3
             // 
@@ -201,7 +138,7 @@
             // 
             this.dgvFlags.AllowUserToAddRows = false;
             this.dgvFlags.AllowUserToDeleteRows = false;
-            this.dgvFlags.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvFlags.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvFlags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFlags.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Flag,
@@ -213,15 +150,95 @@
             this.dgvFlags.TabIndex = 0;
             this.dgvFlags.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFlags_CellContentClick);
             // 
-            // btnClose
+            // Flag
             // 
-            this.btnClose.Location = new System.Drawing.Point(744, 331);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(120, 25);
-            this.btnClose.TabIndex = 9;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.Flag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Flag.DataPropertyName = "Name";
+            this.Flag.HeaderText = "Flag";
+            this.Flag.Name = "Flag";
+            this.Flag.ReadOnly = true;
+            // 
+            // DelFlag
+            // 
+            this.DelFlag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DelFlag.HeaderText = "Delete";
+            this.DelFlag.Name = "DelFlag";
+            this.DelFlag.ReadOnly = true;
+            this.DelFlag.Text = "[Delete this Flag]";
+            this.DelFlag.UseColumnTextForButtonValue = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.btnRegSave);
+            this.groupBox2.Controls.Add(this.txtRegDesc);
+            this.groupBox2.Controls.Add(this.txtRegAdd);
+            this.groupBox2.Controls.Add(this.dgvRegisters);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(868, 158);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Registers:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(453, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Description:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(453, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Address:";
+            // 
+            // btnRegSave
+            // 
+            this.btnRegSave.Location = new System.Drawing.Point(786, 124);
+            this.btnRegSave.Name = "btnRegSave";
+            this.btnRegSave.Size = new System.Drawing.Size(75, 23);
+            this.btnRegSave.TabIndex = 4;
+            this.btnRegSave.Text = "Save";
+            this.btnRegSave.UseVisualStyleBackColor = true;
+            this.btnRegSave.Click += new System.EventHandler(this.btnRegSave_Click);
+            // 
+            // txtRegDesc
+            // 
+            this.txtRegDesc.Location = new System.Drawing.Point(454, 74);
+            this.txtRegDesc.Name = "txtRegDesc";
+            this.txtRegDesc.Size = new System.Drawing.Size(408, 20);
+            this.txtRegDesc.TabIndex = 2;
+            // 
+            // txtRegAdd
+            // 
+            this.txtRegAdd.Location = new System.Drawing.Point(453, 35);
+            this.txtRegAdd.Name = "txtRegAdd";
+            this.txtRegAdd.Size = new System.Drawing.Size(408, 20);
+            this.txtRegAdd.TabIndex = 1;
+            // 
+            // dgvRegisters
+            // 
+            this.dgvRegisters.AllowUserToAddRows = false;
+            this.dgvRegisters.AllowUserToDeleteRows = false;
+            this.dgvRegisters.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvRegisters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegisters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Register,
+            this.DelReg});
+            this.dgvRegisters.Location = new System.Drawing.Point(6, 19);
+            this.dgvRegisters.Name = "dgvRegisters";
+            this.dgvRegisters.ReadOnly = true;
+            this.dgvRegisters.Size = new System.Drawing.Size(441, 128);
+            this.dgvRegisters.TabIndex = 0;
+            this.dgvRegisters.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegisters_CellContentClick);
             // 
             // Register
             // 
@@ -242,23 +259,6 @@
             this.DelReg.Text = "[Delete this Register]";
             this.DelReg.UseColumnTextForButtonValue = true;
             // 
-            // Flag
-            // 
-            this.Flag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Flag.DataPropertyName = "Name";
-            this.Flag.HeaderText = "Flag";
-            this.Flag.Name = "Flag";
-            this.Flag.ReadOnly = true;
-            // 
-            // DelFlag
-            // 
-            this.DelFlag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DelFlag.HeaderText = "Delete";
-            this.DelFlag.Name = "DelFlag";
-            this.DelFlag.ReadOnly = true;
-            this.DelFlag.Text = "[Delete this Flag]";
-            this.DelFlag.UseColumnTextForButtonValue = true;
-            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,12 +273,12 @@
             this.Text = "Details";
             this.Load += new System.EventHandler(this.Details_Load);
             this.panel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegisters)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlags)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegisters)).EndInit();
             this.ResumeLayout(false);
 
         }

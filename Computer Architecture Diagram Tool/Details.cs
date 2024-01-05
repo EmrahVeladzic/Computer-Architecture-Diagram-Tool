@@ -35,8 +35,24 @@ namespace Computer_Architecture_Diagram_Tool
             this.dgvRegisters.DataSource = null;
             this.dgvFlags.DataSource = null;
 
-            this.dgvFlags.DataSource = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Flags;
-            this.dgvRegisters.DataSource = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers;
+            BindingList<Register> rList = new BindingList<Register>();
+            foreach (Register reg in Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers)
+            {
+                rList.Add(reg);
+            }
+
+            BindingList<Flag> fList = new BindingList<Flag>();
+
+            foreach (Flag fl in Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Flags)
+            {
+                fList.Add(fl);
+            }
+
+
+            this.dgvRegisters.DataSource = rList;
+            this.dgvFlags.DataSource= fList;
+
+            
 
         }
 
@@ -112,13 +128,10 @@ namespace Computer_Architecture_Diagram_Tool
 
         private void dgvRegisters_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex<0 || e.ColumnIndex<0)
-            {
-                return;
-            }
+           
 
 
-            if (e.ColumnIndex==1)
+            if (e.RowIndex>=0 && e.ColumnIndex==1)
             {
                 var res = MessageBox.Show("Are you sure?","Delete?",MessageBoxButtons.YesNo);
 
@@ -127,8 +140,41 @@ namespace Computer_Architecture_Diagram_Tool
 
                     Register tmp = dgvRegisters.Rows[e.RowIndex].DataBoundItem as Register;
 
+                    int ti = tmp.Id;
 
-                    Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers.Remove(tmp);
+
+                  
+
+
+                   ObjectClass tempClass = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault();
+
+
+
+                    foreach (Register rg in tempClass.Registers)
+                    {
+
+                        if (rg.Id == ti)
+                        {
+                            tempClass.Registers.Remove(rg);
+
+                            break;
+                        }
+
+                    }
+
+
+                    foreach (Register rg in tempClass.Registers)
+                    {
+
+                        if (rg.Id > ti)
+                        {
+                            rg.Id--;
+                        }
+
+                    }
+
+
+
 
                     Reload_DGV();
                 }
@@ -140,12 +186,9 @@ namespace Computer_Architecture_Diagram_Tool
 
         private void dgvFlags_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
-            {
-                return;
-            }
+          
 
-            if (e.ColumnIndex == 1)
+            if (e.RowIndex >=0 && e.ColumnIndex == 1)
             {
                 var res = MessageBox.Show("Are you sure?", "Delete?", MessageBoxButtons.YesNo);
 
@@ -154,8 +197,38 @@ namespace Computer_Architecture_Diagram_Tool
 
                     Flag tmp = dgvFlags.Rows[e.RowIndex].DataBoundItem as Flag;
 
+                    int ti = tmp.Id;
 
-                    Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Flags.Remove(tmp);
+                   
+
+                    ObjectClass tempClass = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault();
+
+
+                    foreach (Flag fl in tempClass.Flags)
+                    {
+
+                        if (fl.Id == ti)
+                        {
+                            tempClass.Flags.Remove(fl);
+
+                            break;
+                        }
+
+                    }
+
+                    foreach  (Flag fl in tempClass.Flags)
+                    {
+
+                        if (fl.Id>ti)
+                        {
+                            fl.Id--;
+                        }
+
+                    }
+
+
+
+
 
                     Reload_DGV();
                 }
