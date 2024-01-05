@@ -198,6 +198,7 @@ namespace Computer_Architecture_Diagram_Tool
                 if (def_origin.X >= left && def_origin.X <= right && def_origin.Y >= top && def_origin.Y <= bottom)
                 {
                     cmbObjCls.Enabled = true;
+                    btnDetail.Enabled = true;
                     cmbObjCls.DataSource=Classes.list;
 
                     type_class = obj.TypeId;
@@ -224,6 +225,7 @@ namespace Computer_Architecture_Diagram_Tool
                     cmbObjCls.DataSource = null;
                     cmbObjCls.DataSource = new List<string> { $"<NOT AN OBJECT>" } ;
                     cmbObjCls.Enabled=false;
+                    btnDetail.Enabled=false;
 
                     type_class = g.TypeId;
                     list_Id = g.Id;
@@ -248,6 +250,7 @@ namespace Computer_Architecture_Diagram_Tool
                     cmbObjCls.DataSource = null;
                     cmbObjCls.DataSource = new List<string> { $"<NOT AN OBJECT>" };
                     cmbObjCls.Enabled = false;
+                    btnDetail.Enabled = false;
 
                     type_class = c.TypeId;
                     list_Id = c.Id;
@@ -271,6 +274,7 @@ namespace Computer_Architecture_Diagram_Tool
             cmbObjCls.DataSource = new List<string> { $"" };
             cmbObjCls.Enabled = false;
             txName.Text = $"";
+            btnDetail.Enabled = false;
     
             selectionId = 0;
             type_class = '\0';
@@ -453,7 +457,7 @@ namespace Computer_Architecture_Diagram_Tool
 
                 TypeId='c',
 
-                TypeName=$"Connector ",
+                TypeName=$"Function ",
 
                 begin_point=(new Point(x,y)),
 
@@ -476,7 +480,7 @@ namespace Computer_Architecture_Diagram_Tool
             Groups.list.Add(new ObjGroup
             {
                 Id=Groups.list.Count(),
-                TypeName=$"Group ",
+                TypeName=$"Device ",
 
                 TypeId='g',
                 
@@ -1032,7 +1036,18 @@ namespace Computer_Architecture_Diagram_Tool
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            if (type_class != 'o')
+            {
+                
+                return;
+            }
 
+            Object tmp = Objects.list.Where(c=>c.Id==selectionId).FirstOrDefault();
+
+
+
+            Form newForm = new Details(tmp);
+            newForm.ShowDialog();
         }
     }
 }

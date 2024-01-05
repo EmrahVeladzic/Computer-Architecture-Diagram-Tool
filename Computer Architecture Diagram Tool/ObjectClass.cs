@@ -35,48 +35,22 @@ namespace Computer_Architecture_Diagram_Tool
 
     }
 
-    public class RegSet 
-    {
-        
 
-        public List<Register> Values { get; set; }
 
-        public string Description { get; set; }
-    }
-
-    public class Function 
-    {
-
-        public int Id { get; set; }
-
-        public string Declaration { get; set; }
-
-        public string Description { get; set; }
-
-    }
 
 
     public class Flag 
     {
         public int Id { get; set; }
 
-        public int BaseValue { get; set; }
+        public int EnumValue { get; set; }
 
-        public char BitMask { get; set; }
-
-        public string Description { get; set; }
+        public string Name { get; set; }
 
     }
 
 
-    public class FlagSet 
-    {
-       
-
-        public List<Flag> Values { get; set;}
-
-        public string Description { get; set; }
-    }
+  
 
     public class ObjectClass : Types
     {
@@ -92,10 +66,11 @@ namespace Computer_Architecture_Diagram_Tool
 
         public int Height { get; set; }
 
-        public virtual RegSet Registers { get; set; }
-        public virtual FlagSet Flags { get; set; }
+        public  List<Register> Registers { get; set; }
 
-        public List<Function> Functions { get; set; }
+        public  List<Flag> Flags { get; set; }
+
+      
 
 
         public override string ToString()
@@ -122,6 +97,10 @@ namespace Computer_Architecture_Diagram_Tool
         public Point begin_point;
         public Point end_point;
 
+        public string Name { get; set; }
+
+  
+       
 
     }
 
@@ -133,6 +112,9 @@ namespace Computer_Architecture_Diagram_Tool
         public int first_end;
         public int second_end;
 
+        public string Name { get; set; }
+
+
 
         public  Point begin_point;
 
@@ -140,12 +122,12 @@ namespace Computer_Architecture_Diagram_Tool
 
         public Point joint_point;
 
-
         public Color Con1 { get; set; }
 
         public Color Con2 { get; set; }
 
-        public List<string> Functions { get; set; }
+    
+       
 
     }
 

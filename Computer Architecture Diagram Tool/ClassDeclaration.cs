@@ -107,9 +107,7 @@ namespace Computer_Architecture_Diagram_Tool
 
 
                 Rectangle rect = new Rectangle(wo- ((int)w / 2), ho- (((int)h*2 )/3), (int)w, (int)h);
-
-                     
-
+              
 
 
                 Color p  =Color.FromName(cmbPrim.Text);
@@ -128,11 +126,8 @@ namespace Computer_Architecture_Diagram_Tool
 
 
                     obj_brush.Dispose();
-
+                    
                 }
-
-
-
 
 
 
@@ -239,7 +234,7 @@ namespace Computer_Architecture_Diagram_Tool
 
                 ObjectClass newClass = new ObjectClass
                 {
-                    Id = Classes.list.Count,
+                    Id = selection,
                     TypeId = 'o',
                     TypeName = txtName.Text,
                     Color = Color.FromName(cmbPrim.Text),
@@ -247,7 +242,8 @@ namespace Computer_Architecture_Diagram_Tool
                     Width = (int)nWidth.Value,
                     Height = (int)nHeight.Value,
                     Description = txtDesc.Text,
-
+                    Registers = new List<Register>(),
+                    Flags = new List<Flag>()
 
                 };
 
@@ -268,13 +264,147 @@ namespace Computer_Architecture_Diagram_Tool
 
 
             }
+
+            else
+            {
+                ObjectClass newClass = Classes.list.Where(c => c.Id == this.selection).FirstOrDefault();
+
+                
+
+                
+                    newClass.TypeName = txtName.Text;
+                     newClass.Color = Color.FromName(cmbPrim.Text);
+                    newClass.Shaded = Color.FromName(cmbSec.Text);
+                    newClass.Width = (int)nWidth.Value;
+                    newClass.Height = (int)nHeight.Value;
+                    newClass.Description = txtDesc.Text;
+
+                
+
+
+                dgvClasses.DataSource = null;
+                dgvClasses.DataSource = Classes.list;
+
+                txtName.Text = string.Empty;
+                txtDesc.Text = string.Empty;
+
+                nWidth.Value = 0;
+                nHeight.Value = 0;
+
+                cmbPrim.SelectedIndex = 0;
+                cmbSec.SelectedIndex = 0;
+
+
+
+            }
+
+            cbEdit.Checked = false;
+            selection = Classes.list.Count();
         }
 
         private void dgvClasses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex<0||cbEdit.Checked==false) return;
+           if(e.RowIndex<0) return;
+
+            ObjectClass tmp = dgvClasses.Rows[e.RowIndex].DataBoundItem as ObjectClass;
+
+            
+
+            if (e.ColumnIndex == 0)
+            {
+
+                
+
+                this.selection = tmp.Id;
+
+                this.cbEdit.Checked = true;
+
+                this.txtDesc.Text = tmp.Description;
+
+                this.txtName.Text = tmp.TypeName;
+
+                this.nHeight.Value = tmp.Height;
+
+                this.nWidth.Value = tmp.Width;
+
+                this.cmbPrim.SelectedItem = tmp.Color;
+
+                this.cmbSec.SelectedItem = tmp.Shaded;
+
+            }
+
+            else if (e.ColumnIndex == 1)
+            {
+                var dRes = MessageBox.Show("Are you sure?", "Delete?",MessageBoxButtons.YesNo);
+                if (dRes == DialogResult.Yes)
+                {
+                   
+
+                  
+                        foreach (ObjectClass cls in Classes.list)
+                        {
+                            if (cls.Id == tmp.Id)
+                            {
+
+                                Classes.list.Remove(cls);
+                                
+                               
+
+                                break;
+                            }
+
+                           
+                        }
+
+                        foreach (ObjectClass cls in Classes.list)
+                        {
+
+                            if (cls.Id > tmp.Id)
+                            {
+
+                                 cls.Id--;
 
 
+
+                                 break;
+                            }
+
+                        }
+
+
+                    dgvClasses.DataSource = null;
+                    dgvClasses.DataSource = Classes.list;
+
+
+                    this.txtName.Text = string.Empty;
+                    this.txtDesc.Text = string.Empty;
+                    this.nHeight.Value = 0;
+                    this.nWidth.Value = 0;
+
+                    this.cmbPrim.SelectedIndex = 0;
+                    this.cmbSec.SelectedIndex = 0;
+                }
+
+                
+
+            }
+
+            else
+            {
+                return;
+            }
+
+            
+        }
+
+        private void cbEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEdit.Checked == false)
+            {
+                this.selection = Classes.list.Count();
+            }
+
+           
         }
     }
 }
