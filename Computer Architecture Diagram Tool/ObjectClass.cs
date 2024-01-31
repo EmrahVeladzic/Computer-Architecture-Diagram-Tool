@@ -36,9 +36,6 @@ namespace Computer_Architecture_Diagram_Tool
     }
 
 
-
-
-
     public class Flag 
     {
         public int Id { get; set; }
