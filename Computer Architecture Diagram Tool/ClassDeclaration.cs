@@ -242,7 +242,7 @@ namespace Computer_Architecture_Diagram_Tool
                     Width = (int)nWidth.Value,
                     Height = (int)nHeight.Value,
                     Description = txtDesc.Text,
-                    Registers = new List<Register>(),
+                    Addresses = new List<Address>(),
                     Flags = new List<Flag>()
 
                 };
@@ -338,7 +338,18 @@ namespace Computer_Architecture_Diagram_Tool
                 var dRes = MessageBox.Show("Are you sure?", "Delete?",MessageBoxButtons.YesNo);
                 if (dRes == DialogResult.Yes)
                 {
-                   
+
+
+                    foreach (Object o in Objects.list.ToList())
+                    {
+                        if (o.ClassId == tmp.Id)
+                        {
+                            Objects.list.Remove(o);
+                            
+                        }
+
+                    }
+
 
                   
                         foreach (ObjectClass cls in Classes.list)

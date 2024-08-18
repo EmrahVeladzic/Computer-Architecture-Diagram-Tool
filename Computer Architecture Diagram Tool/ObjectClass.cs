@@ -25,11 +25,11 @@ namespace Computer_Architecture_Diagram_Tool
     }
 
 
-    public class Register
+    public class Address
     {
         public int Id { get; set; }
 
-        public int Address { get; set; }
+        public int Value { get; set; }
 
         public string Description { get; set; }
 
@@ -63,7 +63,7 @@ namespace Computer_Architecture_Diagram_Tool
 
         public int Height { get; set; }
 
-        public  List<Register> Registers { get; set; }
+        public  List<Address> Addresses { get; set; }
 
         public  List<Flag> Flags { get; set; }
 

@@ -19,7 +19,7 @@ namespace Computer_Architecture_Diagram_Tool
             InitializeComponent();
 
             this.dgvFlags.AutoGenerateColumns = false;
-            this.dgvRegisters.AutoGenerateColumns = false;
+            this.dgvAdresses.AutoGenerateColumns = false;
             
         }
 
@@ -32,13 +32,13 @@ namespace Computer_Architecture_Diagram_Tool
 
         void Reload_DGV()
         {
-            this.dgvRegisters.DataSource = null;
+            this.dgvAdresses.DataSource = null;
             this.dgvFlags.DataSource = null;
 
-            BindingList<Register> rList = new BindingList<Register>();
-            foreach (Register reg in Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers)
+            BindingList<Address> addrList = new BindingList<Address>();
+            foreach (Address addr in Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Addresses)
             {
-                rList.Add(reg);
+                addrList.Add(addr);
             }
 
             BindingList<Flag> fList = new BindingList<Flag>();
@@ -49,7 +49,7 @@ namespace Computer_Architecture_Diagram_Tool
             }
 
 
-            this.dgvRegisters.DataSource = rList;
+            this.dgvAdresses.DataSource = addrList;
             this.dgvFlags.DataSource= fList;
 
             
@@ -64,27 +64,27 @@ namespace Computer_Architecture_Diagram_Tool
 
    
 
-        private void btnRegSave_Click(object sender, EventArgs e)
+        private void btnAddrSave_Click(object sender, EventArgs e)
         {
-            int.TryParse(txtRegAdd.Text,out int rv);
+            int.TryParse(txtAddrAdd.Text,out int rv);
 
             
-            int newID = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers.Count();
+            int newID = Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Addresses.Count();
 
 
 
-            Register newReg = new Register {
+            Address newReg = new Address {
                 Id = newID,
-                Address = rv,
-                Description = txtRegDesc.Text
+                Value = rv,
+                Description = txtAddrDesc.Text
 
 
             };
 
-            Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Registers.Add(newReg);
+            Classes.list.Where(c => c.Id == ClassID).FirstOrDefault().Addresses.Add(newReg);
 
-            txtRegAdd.Text = string.Empty;
-            txtRegDesc.Text = string.Empty;
+            txtAddrAdd.Text = string.Empty;
+            txtAddrDesc.Text = string.Empty;
 
             Reload_DGV();
 
@@ -126,7 +126,7 @@ namespace Computer_Architecture_Diagram_Tool
             this.Close();
         }
 
-        private void dgvRegisters_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAddresses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
 
@@ -138,7 +138,7 @@ namespace Computer_Architecture_Diagram_Tool
                 if (res==DialogResult.Yes)
                 {
 
-                    Register tmp = dgvRegisters.Rows[e.RowIndex].DataBoundItem as Register;
+                    Address tmp = dgvAdresses.Rows[e.RowIndex].DataBoundItem as Address;
 
                     int ti = tmp.Id;
 
@@ -150,12 +150,12 @@ namespace Computer_Architecture_Diagram_Tool
 
 
 
-                    foreach (Register rg in tempClass.Registers)
+                    foreach (Address addr in tempClass.Addresses)
                     {
 
-                        if (rg.Id == ti)
+                        if (addr.Id == ti)
                         {
-                            tempClass.Registers.Remove(rg);
+                            tempClass.Addresses.Remove(addr);
 
                             break;
                         }
@@ -163,12 +163,12 @@ namespace Computer_Architecture_Diagram_Tool
                     }
 
 
-                    foreach (Register rg in tempClass.Registers)
+                    foreach (Address addr in tempClass.Addresses)
                     {
 
-                        if (rg.Id > ti)
+                        if (addr.Id > ti)
                         {
-                            rg.Id--;
+                            addr.Id--;
                         }
 
                     }
@@ -235,5 +235,7 @@ namespace Computer_Architecture_Diagram_Tool
             }
 
         }
+
+       
     }
 }
