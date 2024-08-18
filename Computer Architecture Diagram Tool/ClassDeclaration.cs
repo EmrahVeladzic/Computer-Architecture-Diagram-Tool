@@ -340,8 +340,27 @@ namespace Computer_Architecture_Diagram_Tool
                 {
 
 
+                    
+
+                    
+
+
+
                     foreach (Object o in Objects.list.ToList())
                     {
+                        foreach (Connector c in Connectors.list.ToList())
+                        {
+                            if (c.begin_point == o.origin || c.end_point == o.origin)
+                            {
+
+                                Connectors.list.Remove(c);
+                            }
+
+
+
+                        }
+
+
                         if (o.ClassId == tmp.Id)
                         {
                             Objects.list.Remove(o);
